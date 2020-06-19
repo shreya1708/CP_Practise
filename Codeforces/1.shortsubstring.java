@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main {
+public class shortsubstring {
 	private static String s1="";
 	private static String s2="";
 	private static List<String> li=new ArrayList<String>();
