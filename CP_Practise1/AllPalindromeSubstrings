@@ -1,0 +1,43 @@
+import java.util.*;
+public class AllPlaindromeSubstrings {
+  public static void main(String[] args)
+  {
+	  Scanner sc=new Scanner(System.in);
+	  String s=sc.next();
+	  String p="";
+	  palindromesub(s,p);
+	   
+  }
+  public static void palindromesub(String s,String x)
+  {
+	  if(s.length()==0)
+	  {
+		  System.out.println(x);
+		  return;
+	  }
+	  for(int i=0;i<s.length();i++)
+	  {
+		  String p=s.substring(0,i+1);
+		  String left=s.substring(i+1);
+		  if(ispalindrome(p))
+		  {
+			  palindromesub(left,x+" "+p);
+		  }
+	  }
+  }
+  public static boolean ispalindrome(String p)
+  {
+	  int l=0;
+	  int r=p.length()-1;
+	  while(l<=r)
+	  {
+		  if(p.charAt(l)!=p.charAt(r))
+				  {
+			         return false;
+				  }
+		 l++;
+		 r--;
+	  }
+	  return true;
+  }
+}
