@@ -1,0 +1,71 @@
+import java.util.*;
+public class DifferenceInDays {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		String s1=sc.nextLine();
+		String s2=sc.nextLine();
+		
+		Cal(s1,s2);
+	}
+	public static void Cal(String s1,String s2)
+	{
+		String Month[]= {"Jan","feb","mar","april","may","jun","jul","aug","sep","oct","nov","dec"};
+		int days[]= {31,28,31,30,31,30,31,31,30,31,30,31};
+		int cumdays[]= {31,59,90,120,151,181,212,243,273,304,334,365};
+		String arr[]=s1.split("\\-");
+		String arr1[]=s2.split("\\-");
+		int year1=Integer.valueOf(arr1[2]);
+		
+		int year2=Integer.valueOf(arr[2]);
+	
+		int year=year1-year2;
+		int lp=0;
+		if(year==0)
+		{
+			if(year1%4==0||year1%100==0||year1%400==0)
+			{
+				lp++;
+			}
+		}
+		else
+		{
+		for(int i=year2;i<year1;i++)
+		{
+			if(i%4==0||i%100==0||i%400==0)
+			{
+				lp++;
+			}
+		}
+		}
+		
+		int y1=year*365+lp;
+	
+		int l=0;
+		for(int i=0;i<12;i++)
+		{
+			if(Month[i].equals(arr1[1]))
+			{ 
+			
+				l=i;
+				break;
+			}
+		}
+	
+		int v=cumdays[l-1]+Integer.valueOf(arr1[0]);
+		int m=0;
+		for(int i=0;i<12;i++)
+		{
+			if(Month[i].equals(arr[1]))
+			{
+				m=i;
+				break;
+			}
+		}
+	
+		int w=cumdays[m-1]+Integer.valueOf(arr[0]);
+		int x=y1+v-w;
+		System.out.println(x+"days");
+	}
+
+}
