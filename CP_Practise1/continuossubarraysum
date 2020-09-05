@@ -1,0 +1,51 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+	    int m=0;
+	    int sum=0;
+	    int u=0;
+	 Scanner sc=new Scanner(System.in);
+	 int a=sc.nextInt();
+	 Test t1=new Test();
+	 for(int i=0;i<a;i++)
+	 {
+	     int b=sc.nextInt();
+	     int p=sc.nextInt();
+	     int ar[]=new int[b];
+	     for(int k=0;k<b;k++)
+	     {
+	         ar[k]=sc.nextLong();
+	     }
+	     t1.func1(ar,p);
+	 } 
+	
+}
+}
+class Test{
+    int sum=0;
+    int m=0;
+ void func1(int b[],int p)
+{
+    for(int i=0;i<b.length;i++)
+    {
+           int sum=0;
+           for(int j=i;j<b.length;j++)
+           {
+             sum=sum+b[j];
+             if(sum==p)
+             {
+                 m++;
+                 System.out.println((i+1)+" "+(j+1));
+                 return;
+              }
+           }   
+    }
+    if(m==0)
+    {
+        System.out.println("-1");
+    }
+}
+}
