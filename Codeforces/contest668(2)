@@ -1,0 +1,70 @@
+import java.util.*;
+public class contest6682 {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			long n=sc.nextLong();
+			long arr[]=new long[(int)n];
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextLong();
+			}
+
+			
+				int i=0;
+				int j=0;
+				
+				while(i<n&&j<n)
+				{
+					while(i<n-1&&arr[i]<=0)
+					{
+						i++;
+					}
+				    if(i>=j)
+				    {
+				    	j=i+1;
+				    }
+					while(j<n&&arr[j]>0)
+					{
+						j++;
+					}
+					if(i<j&&j<n)
+					{
+						if(arr[i]>Math.abs(arr[j]))
+						{
+							arr[i]=arr[i]+arr[j];
+							arr[j]=0;
+							j++;
+						}
+						else if(arr[i]<Math.abs(arr[j]))
+						{
+							arr[j]=arr[j]+arr[i];
+							arr[i]=0;
+							i++;
+						}
+						else
+						{
+							arr[i]=0;
+							arr[j]=0;
+							i++;
+							j++;
+						}
+					}
+					
+				}
+				long sum=0;
+				for(int a=0;a<n;a++)
+				{
+					if(arr[a]>0)
+					{
+						sum=sum+arr[a];
+					}
+				}
+			  System.out.println(sum);
+		}
+	}
+
+}
