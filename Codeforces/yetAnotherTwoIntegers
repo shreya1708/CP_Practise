@@ -1,0 +1,23 @@
+import java.util.*;
+public class contestsep4{
+  public static void main(String[] args)
+ {
+ Scanner sc=new Scanner(System.in);
+  int t=sc.nextInt();
+  while(t-->0)
+ {
+ 
+    long a=sc.nextLong();
+    long b=sc.nextLong();
+    long z=Math.abs(a-b);
+    long u=z/10;
+    if(z%10==0)
+    {
+      System.out.println(u);
+    }
+    else
+   { 
+    System.out.println(u+1);
+   }
+}
+}
