@@ -1,0 +1,91 @@
+import java.util.*;
+public class Contestsept41 {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		while(t-->0)
+		{
+			long a=sc.nextLong();
+			long b=sc.nextLong();
+			long x=sc.nextLong();
+			long y=sc.nextLong();
+			long n=sc.nextLong();
+		    long min1=Math.min(a, b);
+		    long p=Math.abs(x-a);
+		    long q=Math.abs(y-b);
+		    int flag=0;
+		    if(a-Math.min(p,n)<b-Math.min(q,n))
+		    {
+		    			if(a-x<n)
+		    			{
+		    		    n=n-(a-x);
+		    			a=a-(a-x);
+		    			
+		    			}
+		    			else
+		    			{
+		    				a=a-n;
+		    				n=0;
+		    				System.out.println(a*b);
+		    				continue;
+		    				
+		    			}
+		    		
+		    		if(n>0)
+		    		{
+		    			if(n>q)
+		    			{
+		    				b=b-q;
+		    			}
+		    			else
+		    			{
+		    				b=b-n;
+		    			}
+		    			
+		    		}
+		    	
+		    		System.out.println(a*b);
+	    			continue;
+		    	
+		    	
+		    }
+		    else
+		    {
+				    			if(b-y<n)
+				    			{
+				    			n=n-(b-y);
+				    			b=b-(b-y);
+				    		
+				    			}
+				    			else
+				    			{
+				    				b=b-n;  
+				    			    n=0;
+				    			System.out.println(a*b);
+				    			continue;
+				    				
+				    			}
+				    		
+				    		if(n>0)
+				    		{
+				    			if(n>p)
+				    			{
+				    				a=a-p;
+				    			}
+				    			else
+				    			{
+				    				a=a-n;
+				    			}
+				    		}
+				    		System.out.println(a*b);
+			    			continue;
+				    	
+				    	
+				    
+		    }
+		 
+		}
+		
+	}
+ }
