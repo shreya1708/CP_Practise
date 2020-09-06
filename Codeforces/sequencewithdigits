@@ -1,0 +1,29 @@
+import java.util.*;
+public class Contest643
+{
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		long t=sc.nextLong();
+		while(t-->0)
+		{
+	    long a1=sc.nextLong();
+		long k=sc.nextLong();
+		while(k>1)
+		{
+			String s=String.valueOf(a1);
+			char c[]=s.toCharArray();
+			Arrays.sort(c);
+                        if(c[0]=='0'||c[c.length-1]=='0')
+			{
+				break;
+			}
+		    long new1=(c[0]-'0')*(c[c.length-1]-'0');
+		    a1=a1+new1;
+		    k--;
+		}
+		
+	    System.out.println(a1);
+		}
+	}
+}
