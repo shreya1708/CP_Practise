@@ -1,0 +1,28 @@
+import java.util.*;
+public class SplitANumberForMaxSum {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+	   String s=String.valueOf(n);
+	  
+	   char c1[]=s.toCharArray();
+	   List<Integer> li2=new ArrayList<Integer>();
+	   for(int i=0;i<s.length();i++)
+	   {
+		   li2.add((int)(c1[i]-'0'));
+	   }
+	   Collections.sort(li2,Collections.reverseOrder());
+	   System.out.println("The two groups are:");
+	   List<Integer> li=new ArrayList<Integer>();
+	   List<Integer> li1=new ArrayList<Integer>();
+	   for(int i=0;i<li2.size()-1;i++)
+	   {
+		   li.add(li2.get(i));
+	   }
+	   li1.add(li2.get(li2.size()-1));
+	   System.out.println(li);
+	   System.out.println(li1);
+	}
+
+}
