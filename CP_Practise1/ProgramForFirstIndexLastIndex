@@ -1,0 +1,66 @@
+import java.util.*;
+public class FirstLastIndexBinary {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int t=sc.nextInt();
+		int arr[]=new int[t];
+		for(int i=0;i<t;i++)
+		{
+			arr[i]=sc.nextInt();
+		}
+		int s=sc.nextInt();
+		Searchhh(arr,s);
+	}
+	public static void Searchhh(int arr[],int s)
+	{
+		int low=0;
+		int high=arr.length-1;
+		int prev=0;
+		while(low<=high)
+		{
+			int mid=low+(high-low)/2;
+			if(arr[mid]==s)
+			{
+				prev=mid;
+				high=mid-1;
+			}
+			else if(arr[mid]<s)
+			{
+				low=mid+1;
+				
+			}
+			else
+			{
+				high=mid-1;
+			}
+		}
+		  int p=high+1;
+		  
+		  prev=0;
+		  low=0;
+		 high=arr.length-1;
+		while(low<=high)
+		{
+			int mid=(low+high)/2;
+			
+			if(arr[mid]==s)
+			{
+				prev=mid;
+				low=mid+1;
+			}
+			else if(arr[mid]<s)
+			{
+				low=mid+1;
+				
+			}
+			else
+			{
+				high=mid-1;
+			}
+		}
+		System.out.println(p+" "+(low-1));
+		System.out.println("frequnecy of the element is :"+(low-p));
+	}
+
+}
