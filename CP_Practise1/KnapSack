@@ -1,0 +1,56 @@
+import java.util.*;
+public class Knapsack {
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int w[]=new int[n];
+		int val[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			w[i]=sc.nextInt();
+		}
+		for(int i=0;i<n;i++)
+		{
+			val[i]=sc.nextInt();
+		}
+		int wt=sc.nextInt();
+		
+		knap(w,val,wt);
+	}
+	public static void knap(int w[],int val[],int wt)
+	{
+	
+		int n=w.length;
+		int dp[][]=new int[n+1][wt+1];
+		int u=helper(w,val,dp,n,wt);
+	
+		System.out.println(u);
+		
+	}
+    public static int helper(int w[],int val[],int dp[][],int n,int wt)
+    {
+    	if(n<=0)
+    	{
+    		return 0;
+    	}
+    	if(wt==0)
+    	{
+    		return 0;
+    	}
+    	if(dp[n][wt]!=0)
+    	{
+    		return dp[n][wt];
+    	}
+    	if(w[n-1]<=wt)
+    	{
+    	dp[n][wt]=Math.max(val[n-1]+helper(w,val,dp,n-1,wt-w[n-1]),helper(w,val,dp,n-1,wt));
+    	}
+    	else
+    	{
+    		dp[n][wt]=helper(w,val,dp,n-1,wt);
+    	}
+    
+    	return dp[n][wt];
+    }
+}
