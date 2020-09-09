@@ -1,0 +1,96 @@
+import java.util.*;
+public class KthLast {
+	public static Node Head=null;
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		int k=sc.nextInt();
+		KthLast kl=new KthLast();
+		add(kl,10);
+		add(kl,14);
+		add(kl,20);
+		add(kl,60);
+		printlist(kl);
+		int x=count1(kl);
+		Search(kl,x-k);
+	}
+	public static void Search(KthLast kl,int m )
+	{
+		  Node current=Head;
+		  int i=0;
+		  while(current!=null&&i<m)
+		  {
+			  current=current.next;
+			  i++;
+		  }
+		  System.out.println(current.data+"heyyy");
+	}
+	 static class Node{
+		   int data;
+		   Node next=null;
+		   Node(int data)
+		   {
+			   this.data=data;
+			   this.next=next;
+		   }
+	   }
+	 public static void  printlist(KthLast li)
+		{
+			Node temp=Head;
+			
+			while(temp!=null)
+			{
+				System.out.println(temp.data);
+				temp=temp.next;
+			
+			}
+			
+		}
+	 public static KthLast add(KthLast li,int n)
+		{
+			Node nd1=new Node(n);
+			if(Head==null)
+			{
+				Head=nd1;
+			}
+			else
+			{
+			Node temp=Head;
+			while(temp.next!=null)
+			{
+				temp=temp.next;
+			}
+			temp.next=nd1;
+			}
+			return li;
+		}
+	 public static int count1(KthLast li)
+	   {
+		   Node slow=Head;
+		   Node fast=Head;
+		   int count=0;
+		   while(true)
+		   {
+			   if(fast.next!=null)
+			   {
+			   if(fast.next.next!=null)
+			   {
+				   count++;
+				   slow=slow.next;
+				   fast=fast.next.next;
+			   }
+			   else
+			   {
+				   return ++count*2;
+			   }
+			   }
+			   else
+			   {
+				   return count*2+1;
+			   }
+		   }
+
+		 
+	   }
+
+}
