@@ -1,0 +1,37 @@
+import java.util.*;
+public class Main{
+
+     public static void main(String []args){
+         Scanner sc=new Scanner(System.in);
+          Integer arr[]={1,20,9,90,89};
+           Arrays.sort(arr,new comp());
+           for(int i=0;i<arr.length;i++)
+           {
+               System.out.print(arr[i]);
+           }
+          
+     }
+     
+}
+class comp implements Comparator<Integer>
+{
+  
+    public int compare(Integer a,Integer b)
+    {
+        String s=String.valueOf(a);
+        String s1=String.valueOf(b);
+       String s3=s+s1;
+       String s4=s1+s;
+       if(Integer.parseInt(s3)<Integer.parseInt(s4))
+       {
+           return 1;
+       }
+       else if(Integer.parseInt(s3)>Integer.parseInt(s4))
+       {
+           return -1;
+       }
+       else{
+           return 0;
+       }
+    }
+}
