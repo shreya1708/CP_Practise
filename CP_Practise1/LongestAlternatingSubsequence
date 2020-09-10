@@ -1,0 +1,55 @@
+import java.util.*;
+/*largest alternating subsequnece*/
+public class Main
+{ 
+    public static int max1=0;
+	public static void main(String[] args) {
+	    
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int arr[]=new int[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        arr[i]=sc.nextInt();
+	    }
+	    solve(arr);
+	
+	}
+	public static void solve(int arr[])
+	{
+	    int dp[][]=new int[arr.length][2];
+	    int result=1+Math.max(solve1(arr,1,arr.length-1,0,dp),solve1(arr,1,arr.length-1,1,dp));
+	    System.out.println(result);
+	}
+	public static int solve1(int arr[],int begin,int end,int flag,int dp[][])
+	{
+	    if(begin>=arr.length)
+	    {
+	        return 0;
+	    }
+	    if(dp[begin][flag]!=0)
+	    {
+	        return dp[begin][flag];
+	    }
+	    else{
+	        int res=0;
+	    for(int i=begin;i<=end;i++)
+	    {
+	        if(flag==1&&arr[i]<arr[i-1])
+	        {
+	          res=Math.max(res,1+solve1(arr,i+1,end,0,dp));
+	        }
+	        else if(flag==0&&arr[i]>arr[i-1])
+	        {
+	             res=Math.max(res,1+solve1(arr,i+1,end,1,dp));
+	        }
+	        else{
+	            res=Math.max(res,solve1(arr,i+1,end,flag,dp));
+	        }
+	         dp[begin][flag]=res;
+	    }
+	    
+	    }
+	    return dp[begin][flag];
+	}
+}
