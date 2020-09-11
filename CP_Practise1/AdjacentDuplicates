@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main{
+	public static void main(String[] args) {
+	       Scanner sc=new Scanner(System.in);
+	       String s="DBAABDAB";
+	       StringBuilder sb=new StringBuilder("");
+	       sb.append(s);
+	       int i=0;
+	       while(i>=0&&i<sb.length()-1)
+	       {
+	       	   if(sb.charAt(i)==sb.charAt(i+1))
+	       	   {
+	       	   	    int k=i-1;
+	       	   	    sb.delete(i,i+2);
+                   while(k>=0&&k+1<sb.length()&&(sb.charAt(k)==sb.charAt(k+1)))
+	       	   	    {
+	       	   	    	sb.delete(k,k+2);
+	       	   	    	k=k-1;
+	       	   	    }
+	       	   	    i=k;
+	       	   }
+	       	   else{
+	       	   	i++;
+	       	   }
+	       }
+	       System.out.println(sb);
+	       
+	}
+}
