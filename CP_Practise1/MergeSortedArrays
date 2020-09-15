@@ -1,0 +1,62 @@
+import java.util.*;
+public class mergeSortedArrays {
+  public static void main(String[] args)
+  {
+	   Scanner sc=new Scanner(System.in);
+	   int n=sc.nextInt();
+	   int m=sc.nextInt();
+	   int arr[]=new int[n];
+	   int brr[]=new int[m];
+	   for(int i=0;i<n;i++)
+	   {
+		   arr[i]=sc.nextInt();
+		   
+	   }
+	   for(int i=0;i<m;i++)
+	   {
+		   brr[i]=sc.nextInt();
+	   }
+	   call(arr,brr);
+  }
+  public static void call(int arr[],int brr[])
+  {
+	  int i=0;
+	  
+	  while(i<arr.length)
+	  {
+		  if(arr[i]<brr[0])
+		  {
+			  i++;
+		  }
+		  else if(arr[i]>brr[0])
+		  {
+			  int temp=arr[i];
+			  arr[i]=brr[0];
+			  brr[0]=temp;
+			  int a=1;
+			  for(;a<brr.length;a++)
+			  {
+				  if(temp>brr[a])
+				  {
+					  brr[a-1]=brr[a];
+				  }
+				  else
+				  {
+					  break;
+				  }
+			  }
+			  brr[a-1]=temp;
+			  i++;
+		  }
+	  }
+	  for(int p=0;p<arr.length;p++)
+	  {
+		  System.out.print(arr[p]+" ");
+	  }
+	  System.out.println();
+	  for(int q=0;q<brr.length;q++)
+	  {
+		  System.out.print(brr[q]+" ");
+	  }
+  }
+}
