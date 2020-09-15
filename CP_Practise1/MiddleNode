@@ -1,0 +1,124 @@
+import java.util.*;
+public class MiddleNode {
+	public static Node Head=null;
+	public static void main(String[] args)
+	{
+		Scanner sc=new Scanner(System.in);
+		MiddleNode md=new MiddleNode();
+		add(md,20);
+		add(md,30);
+		add(md,50);
+		add(md,60);
+		printlist(md);
+		int y=count1(md);
+		System.out.println(y+"heloo");
+		if(y%2==0)
+		{
+		Node nd2=find(md);
+		System.out.println(nd2.data+"hiii");
+		}
+		else if(y%2==1)
+		{
+			Node nd3=find1(md);	
+			System.out.println(nd3.data+"hiii");
+		}
+		
+	}
+	public static void  printlist(MiddleNode li)
+	{
+		Node temp=Head;
+		
+		while(temp!=null)
+		{
+			System.out.println(temp.data);
+			temp=temp.next;
+		
+		}
+		
+	}
+   static class Node{
+	   int data;
+	   Node next=null;
+	   Node(int data)
+	   {
+		   this.data=data;
+		   this.next=next;
+	   }
+   }
+   public static MiddleNode add(MiddleNode li,int n)
+	{
+		Node nd1=new Node(n);
+		if(Head==null)
+		{
+			Head=nd1;
+		}
+		else
+		{
+		Node temp=Head;
+		while(temp.next!=null)
+		{
+			temp=temp.next;
+		}
+		temp.next=nd1;
+		}
+		return li;
+	}
+   public static Node find(MiddleNode li)
+   {
+	   if(Head==null)
+	   {
+		   return null;
+	   }
+	   Node slow=Head;
+	   Node fast=Head;
+	   while(fast.next.next!=null)
+	   {
+		   slow=slow.next;
+		   fast=fast.next.next;
+	   }
+	   return slow.next;
+   }
+   public static Node find1(MiddleNode li)
+   {
+	   if(Head==null)
+	   {
+		   return null;
+	   }
+	   Node slow=Head;
+	   Node fast=Head;
+	   while(fast.next!=null)
+	   {
+		   slow=slow.next;
+		   fast=fast.next.next;
+	   }
+	   return slow;
+   }
+   public static int count1(MiddleNode li)
+   {
+	   Node slow=Head;
+	   Node fast=Head;
+	   int count=0;
+	   while(true)
+	   {
+		   if(fast.next!=null)
+		   {
+		   if(fast.next.next!=null)
+		   {
+			   count++;
+			   slow=slow.next;
+			   fast=fast.next.next;
+		   }
+		   else
+		   {
+			   return ++count*2;
+		   }
+		   }
+		   else
+		   {
+			   return count*2+1;
+		   }
+	   }
+
+	 
+   }
+}
