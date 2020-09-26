@@ -1,0 +1,39 @@
+import java.util.*;
+public class Main{
+public static void main(String [] args)
+{
+    Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    int ugly[]=new int[n];
+    ugly[0]=1;
+    int i2=0,i3=0,i5=0;
+    int num_2=2;
+    int num_3=3;
+    int num_5=5;
+    for(int i=1;i<n;i++)
+    {
+        int min1=Math.min(num_2,Math.min(num_3,num_5));
+        ugly[i]=min1;
+        if(min1==num_2)
+        {
+           i2=i2+1;
+           num_2=ugly[i2]*2;
+            
+        }
+          if(min1==num_3)
+        {
+           i3=i3+1;
+           num_3=ugly[i3]*3;
+            
+        }
+          if(min1==num_5)
+        {
+           i5=i5+1;
+           num_5=ugly[i5]*5;
+            
+        }
+    }
+    System.out.println(ugly[n-1]);
+    
+}
+}
