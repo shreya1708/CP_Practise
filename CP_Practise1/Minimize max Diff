@@ -1,0 +1,42 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int k=sc.nextInt();
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<arr.length;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        int big=arr[n-1]-k;
+        int small=arr[0]+k;
+        int result=arr[n-1]-arr[0];
+        int temp=0;
+         if (small > big) 
+        { 
+            temp = small; 
+            small = big; 
+            big = temp; 
+        } 
+        for(int i=1;i<n-1;i++)
+        {
+            int sub=arr[i]-k;
+            int add=arr[i]+k;
+            if(sub>=small||add<=big)
+            {
+                continue;
+            }
+            if(big-sub<=add-small)
+            {
+                small=sub;
+            }
+            else{
+                big=add;
+            }
+        }
+        System.out.println(Math.min(result,big-small));
+    }
+}
