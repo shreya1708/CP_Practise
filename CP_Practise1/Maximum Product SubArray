@@ -1,0 +1,16 @@
+class Solution {
+    // Function to find maximum product subarray
+    long maxProduct(int[] arr, int n) {
+        long max_product=arr[0];
+        long max_product_sofar=arr[0];
+        long min_ending=arr[0];
+        for(int i=1;i<arr.length;i++)
+        {
+            long temp=max_product;
+           max_product=Math.max(arr[i],Math.max(arr[i]*max_product,arr[i]*min_ending));
+           min_ending=Math.min(arr[i],Math.min(arr[i]*temp,arr[i]*min_ending));
+           max_product_sofar=Math.max(max_product_sofar,max_product);
+        }
+       return max_product_sofar;
+    }
+}
