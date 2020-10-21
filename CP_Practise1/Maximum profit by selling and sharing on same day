@@ -1,0 +1,101 @@
+import java.io.*;
+import java.util.*;
+public class Main{
+	public static void main (String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int arr[]=new int[n];
+	    for(int i=0;i<n;i++)
+	    {
+	        arr[i]=sc.nextInt();
+	    }
+	    int min=Integer.MAX_VALUE;
+	    int y=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        if(arr[i]<min)
+	        {
+	            min=arr[i];
+	            y=i;
+	        }
+	    }
+	    int min1=99999;
+	    int x=0;
+	    for(int j=0;j<n;j++)
+	    {
+	        if(arr[j]<min1&&j!=y)
+	        {
+	            min1=arr[j];
+	            x=j;
+	        }
+	    }
+	    int sum=0;
+	    int Max=0;
+	    if(x==y+1||y==x+1)
+	    {
+	         for(int z=y+1;z<n;z++)
+	         {
+	             if(z==x)
+	             {
+	                 continue;
+	             }
+	             int c2=arr[z]-arr[y];
+	             if(c2>0)
+	             {
+	                 Max=Math.max(Max,c2);
+	             }
+	         }
+	         sum=sum+Max;
+	         System.out.println(sum);
+	         return;
+	    }
+	    if(x<y)
+	    {
+	        for(int p=x+1;p<y;p++)
+	        {
+	            int c=arr[p]-arr[x];
+	            if(c>0)
+	            {
+	                Max=Math.max(Max,c);
+	            }
+	        }
+	        sum=sum+Max;
+	        Max=0;
+	        for(int q=y+1;q<n;q++)
+	        {
+	            int c1=arr[q]-arr[y];
+	            if(c1>0)
+	            {
+	                 Max=Math.max(Max,c1);
+	            }
+	        }
+	        sum=sum+Max;
+	        
+	    }
+	    if(x>y)
+	    {
+	        for(int p=y+1;p<x;p++)
+	        {
+	            int c=arr[p]-arr[y];
+	            if(c>0)
+	            {
+	                Max=Math.max(Max,c);
+	            }
+	        }
+	        sum=sum+Max;
+	        Max=0;
+	        for(int q=x+1;q<n;q++)
+	        {
+	            int c1=arr[q]-arr[x];
+	            if(c1>0)
+	            {
+	                 Max=Math.max(Max,c1);
+	            }
+	        }
+	        sum=sum+Max;
+	        
+	    }
+	    System.out.println(sum);
+	    
+	}
+}
