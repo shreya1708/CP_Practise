@@ -1,0 +1,41 @@
+class Solution {
+    int rowWithMax1s(int arr[][], int n, int m) {
+        int max=0;
+        int a=-1;
+        for(int i=0;i<arr.length;i++)
+        {
+            int y=binarysearch(arr[i],1);
+            if(arr[i].length-y-1>max)
+            {
+                max=arr[i].length-1-y;
+                a=i;
+            }
+            
+        }
+        return a;
+    }
+    int binarysearch(int arr[],int s)
+    {
+        int low=0;
+        int high=arr.length-1;
+        int prev=0;
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(arr[mid]==1)
+            {
+                high=mid-1;
+                prev=high;
+            }
+            else if(arr[mid]<s)
+            {
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        return prev;
+    }
+}
